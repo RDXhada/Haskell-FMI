@@ -7,6 +7,7 @@ main = do
     print $ sumCountsIter 65432 6
     print $ sumCountsIter 70000 1
     print $ sumCountsIter 123321 1
+    
     --will output 0
     print $ sumCountsIter 8 9
 
