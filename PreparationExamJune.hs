@@ -18,6 +18,9 @@ main = do
     print $ iterator [3,4,5] (+1)
     print $ iterator [1,2,4] (+1)
     print $ seriesSum 2 4
+    print $ kthNumber [-2, 3, 5, -4, -13, -15, 20, -21] (>= 5) 2 == 20
+    print $ kthNumber [-2, 3, 5, -4, -13, -15, 20, -21] (> 5) 12
+
     -- print $ iterator [1,2,3] (+1)
 
 --task 1
@@ -62,7 +65,6 @@ fromDigits xs = sum (zipWith (*) (reverse xs) (iterate (*10) 1))
 --task 6
 iterator :: Eq a => [a] -> (a -> a) -> Bool
 iterator xs command = and $ map(\(x1,x2)->if x2 == (head $ map (command) (x1:[])) then True else False) $ zip xs $ tail xs
-
 --task 7
 poly :: [Int] -> (Int->Int)
 poly l v = sum . (map (\(a,b) -> a*(v^b))) $ zip l [0,1..]
@@ -92,9 +94,11 @@ t4 = Node 10 (Node 2 Empty (Node 3 (Node 4 Empty Empty) Empty)) (Node 11 (Node 1
 
 --task 14
 sumIter a b = (1 + a**b + b**2)
-
 seriesSum :: (Enum a, Floating a) => a -> a -> a
 seriesSum x y = sum [sumIter x i| i<-[1..y]]
-
 seriesSum1 :: (Floating a, Enum a) => a -> a -> a
 seriesSum1 x y = sum $ map (\i -> sumIter x i) [1..y]
+
+--task 15
+kthNumber :: [p] -> (p -> Bool) -> Int -> p
+kthNumber list condition number = if (number <= length (filter condition list)) then (filter condition list)!!(number-1) else error "No such number"
