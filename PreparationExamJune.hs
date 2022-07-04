@@ -53,7 +53,7 @@ treeToList Empty = []
 treeToList (Node root left right) = treeToList left ++ [root] ++ treeToList right
 
 deepestNodesSum :: (Int -> Bool) -> BTree -> Int
-deepestNodesSum command tree = head $ filter command $ (take 1 $ treeToList tree) ++ (drop ((len tree)-1) $ treeToList tree)
+deepestNodesSum command tree = sum $ filter command $ (take 1 $ treeToList tree) ++ (drop ((len tree)-1) $ treeToList tree)
 len :: BTree -> Int
 len tree = length $ treeToList tree
 
