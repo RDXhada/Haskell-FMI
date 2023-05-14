@@ -1,5 +1,5 @@
 # Haskell-FMI
-## My Haskell experience at FMI Sofia 2022 ##
+## My Haskell experience at FMI Sofia University 2022 ##
 ### Learn Haskell: ###
 
 Book (read chapters [1 .. 8]): http://learnyouahaskell.com/chapters </br>
